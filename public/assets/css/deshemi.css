@@ -1,0 +1,14 @@
+/* Deshmi styles migrated from style.css/deshemi.css */
+
+.deshmi-header {
+  background-color: #12a2a2;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(253, 251, 251);
+  font-family: sans-serif;
+  margin-bottom: 40px;
+}
+
+/* ...rest of deshemi.css content... */

@@ -1,0 +1,10 @@
+/* Doktori styles migrated from style.css/doktori.css */
+
+.profile-wrapper {
+    font-family: 'Segoe UI', sans-serif;
+    color: #000000;
+    margin: 40px auto;
+    max-width: 1000px;
+  }
+
+/* ...rest of doktori.css content... */

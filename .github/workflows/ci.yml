@@ -1,0 +1,83 @@
+name: CI - Medicus API Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout kodi (nen dosjen Medicus)
+        uses: actions/checkout@v4
+        with:
+          path: Medicus
+
+      - name: Instalo PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: mysqli, mbstring
+
+      - name: Instalo dhe nis MariaDB (skip-grant-tables, mjedis CI i perkohshem)
+        run: |
+          sudo apt-get update -y
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server
+          sudo service mariadb stop || true
+          sudo mkdir -p /var/run/mysqld && sudo chown mysql:mysql /var/run/mysqld
+          sudo -u mysql nohup mysqld_safe --skip-grant-tables > /tmp/mysqld.log 2>&1 &
+          for i in {1..15}; do mysqladmin -u root ping && break; sleep 2; done
+
+      - name: Importo skemen e bazes se te dhenave
+        run: mysql -u root < Medicus/database/schema.sql
+
+      - name: Importo te dhenat testuese (seed)
+        run: mysql -u root < Medicus/tests/seed_test_data.sql
+
+      - name: Krijo router.php (per PHP built-in server, simulon .htaccess)
+        run: |
+          cat > router.php << 'EOF'
+          <?php
+          $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+          $file = __DIR__ . $uri;
+
+          // Serve existing files (css/js/img/api/*.php) directly, like Apache would.
+          if ($uri !== '/' && file_exists($file) && !is_dir($file)) {
+              return false;
+          }
+
+          // Everything else under /Medicus/ goes through the front controller.
+          $_SERVER['SCRIPT_NAME'] = '/Medicus/index.php';
+          chdir(__DIR__ . '/Medicus');
+          require __DIR__ . '/Medicus/index.php';
+          EOF
+
+      - name: Nis serverin PHP ne background
+        run: |
+          nohup php -S 127.0.0.1:8000 -t "$GITHUB_WORKSPACE" router.php > /tmp/phpserver.log 2>&1 &
+          sleep 2
+          curl -sf -o /dev/null -w "Server check: HTTP %{http_code}\n" http://127.0.0.1:8000/Medicus/
+
+      - name: Ekzekuto suiten e testeve (TC-01..TC-10, TC-SEC-01)
+        run: |
+          chmod +x Medicus/tests/run_api_tests.sh
+          BASE=http://127.0.0.1:8000/Medicus bash Medicus/tests/run_api_tests.sh | tee /tmp/test_output.log
+
+          FAILS=$(grep -oP 'FAIL:\s*\K[0-9]+' /tmp/test_output.log | tail -1)
+          PASSES=$(grep -oP 'PASS:\s*\K[0-9]+' /tmp/test_output.log | tail -1)
+          echo "Rezultati: $PASSES PASS, $FAILS FAIL"
+
+          if [ -z "$FAILS" ] || [ "$FAILS" != "0" ]; then
+            echo "::error::Nje ose me shume teste deshtuan ($FAILS FAIL)."
+            exit 1
+          fi
+
+      - name: Ngarko log-un e testeve (edhe ne rast deshtimi)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs
+          path: |
+            /tmp/test_output.log
+            /tmp/phpserver.log

@@ -1,0 +1,13 @@
+/* Sherbimet styles migrated from style.css/shernimet.css */
+
+/* service grid styling */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ...rest of shernimet.css content... */

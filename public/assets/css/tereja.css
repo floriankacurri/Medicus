@@ -1,0 +1,11 @@
+/* Tereja styles migrated from style.css/tereja.css */
+
+/* basic page styles */
+.sherbimet-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/* ...rest of tereja.css content... */

@@ -1,0 +1,63 @@
+/* Kontakt styles migrated from style.css/kontakt.css */
+
+.kontakt-main {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+  background-image: url('../fotot/kontakt.jpg'); /* zëvendëso me emrin e saktë të fotos */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.kontakt-form-section {
+  background: rgba(220, 249, 255, 0.249);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.kontakt-form-section h2 {
+  text-align: center;
+  color: #007799;
+  margin-bottom: 20px;
+}
+
+.kontakt-form-section label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+.kontakt-form-section input,
+.kontakt-form-section textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.kontakt-form-section button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0099cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.kontakt-form-section button:hover {
+  background-color: #007799;
+}
+
+#statusi {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+}

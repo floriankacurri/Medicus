@@ -1,0 +1,12 @@
+/* Deget styles migrated from style.css/deget.css */
+
+.branches-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px;
+    justify-content: center;
+    padding: 60px 20px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+/* ...rest of deget.css content... */

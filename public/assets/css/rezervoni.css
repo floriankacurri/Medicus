@@ -1,0 +1,230 @@
+/* NAVBAR */
+      body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* HEADER SIPËR */
+    .top-header {
+      background: #f0fcfc;
+      padding: 8px 0;
+      font-size: 14px;
+      color: #008c95;
+    }
+
+    .top-header .left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .top-header .social-icons a {
+      margin-left: 10px;
+      color: #008c95;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.2s ease;
+    }
+
+    .top-header .social-icons a:hover {
+      color: #005f63;
+    }
+
+    .top-header .right .search-bar {
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 550px;
+    }
+
+    /* HEADER KRYESOR */
+    .main-header {
+      background: white;
+      border-bottom: 2px solid #009ca3;
+      padding: 15px 0;
+      position: sticky;
+  top: 0;
+  z-index: 999;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .logo span {
+      margin-left: 5px;
+      color: #008c95;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+        align-items: center; 
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #333;
+      font-size: 15px;
+      padding: 5px;
+    }
+
+    .navbar a:hover {
+      color: #009ca3;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .top-header .right {
+        margin-top: 10px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .top-header .right .search-bar {
+        width: 100%;
+        
+      }
+    }
+    /* STILIZIMI I DROPDOWN MENU “RRETH NESH” */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  cursor: pointer;
+  color: #333;
+  font-size: 15px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  top: 30px;
+  left: 0;
+}
+
+.dropdown-content a {
+  color: #008c95;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0fefe;
+}
+
+/* Shfaq dropdown-in kur përdoruesi kalon miun mbi “Rreth Nesh” */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Opsional: Ndrysho ngjyrën e “Rreth Nesh” kur është aktiv */
+.dropdown:hover .dropbtn {
+  color: #009ca3;
+}
+/* REZERVONI*/
+ .rezervim-section {
+  background: rgba(231, 252, 251, 0.982);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+} 
+
+
+
+.form-container {
+  max-width: 500px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.725);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.form-container label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  
+}
+
+.form-container input,
+.form-container select,
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent; 
+  border: 1px solid rgba(0, 0, 0, 0.3); 
+  color: #000;  
+}
+
+.form-container button {
+  background-color: #04090a;
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #189696;
+}
+
+#statusi {
+  text-align: center;
+  font-weight: bold;
+  color: rgb(21, 80, 140);
+} 
+/* FOOTER */
+.footer {
+  background-color: #d6fafa;
+  padding: 40px 20px;
+  font-family: sans-serif;
+  color: #111;
+  margin-top: 40px;
+}
