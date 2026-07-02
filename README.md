@@ -1,6 +1,6 @@
-# Medicus — Sistemi për Menaxhimin e Rezervimeve në një Klinikë
+# Medicus — Sistem për Menaxhimin e Pacientëve dhe Rezervimeve në një Klinikë
 
-Aplikacion web (PHP/MySQL, arkitekturë MVC) për menaxhimin e rezervimeve në një klinikë: regjistrim dhe autentikim i përdoruesve, caktim i takimeve mes pacientëve dhe doktorëve, orar disponueshmërie, dhe kartelë shëndetësore digjitale.
+Aplikacion web (PHP/MySQL, arkitekturë MVC) për menaxhimin e pacienteve dhe rezervimeve në një klinikë: regjistrim dhe autentikim i përdoruesve, caktim i takimeve mes pacientëve dhe doktorëve, orar disponueshmërie, dhe kartelë shëndetësore digjitale.
 
 ## Stack-u teknik
 
